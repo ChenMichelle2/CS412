@@ -2,15 +2,16 @@
 {% extends 'quotes/base.html' %}
 
 {% block content %}
-<h1>Hello, world!</h1>
 
-<p>Welcome to our first Django web application!</p>
+<body>
+  <h1>Jungkook Quotes</h1>
 
-<p>This page is brought to you by the letters
-  {{letter1}} and {{letter2}} and by the number {{number}}.
-  </br>
-  {{current_quote}}
+  <p>
+  <div class="quote">
+    {{current_quote}}
+  </div>
   </br>
   <img src={{current_image}} width=600px>
-</p>
+  </p>
+</body>
 {% endblock %}
