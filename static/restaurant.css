@@ -1,0 +1,25 @@
+body {
+  background-color: aqua;
+  padding-left: 30vh;
+  padding-right: 30vh;
+  font-size: large;
+  text-align: center;
+
+}
+
+div {
+  padding: 10px;
+  margin: 25px;
+  text-align: center;
+}
+
+.hours {
+  text-align: center;
+}
+
+table {
+  padding-left: 35vh;
+  padding-right: 35vh;
+  border-collapse: separate;
+  border-spacing: 0 1em;
+}

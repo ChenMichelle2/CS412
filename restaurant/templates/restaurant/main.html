@@ -1,0 +1,23 @@
+<!--templates/restaurant/main.html
+Shows the main page of the restaurant
+-->
+{% extends 'restaurant/base.html' %}
+
+{% block content %}
+
+<div>
+  <h1>Victoria's Seafood</h1>
+  <div class="hours">
+    <ul style="list-style-type:none;">
+      <li>Hours of Operation</li>
+      <li>Mondays-Sundays: 11:00 a.m. - 1:00 a.m.</li>
+    </ul>
+  </div>
+
+  <p>Location: 1029 Commonwealth Ave, Boston, MA 02215 </br>
+    <img src="{{pic}}" width=600 px>
+  </p>
+
+</div>
+
+{% endblock %}
