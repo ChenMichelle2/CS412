@@ -8,9 +8,21 @@
 <div>
   <h1> Confirmation</h1>
 
-  <p>Hi {{name}}</p>
+  <p><strong>Name:</strong> {{name}}</p>
+  <p><strong>Phone Number:</strong> {{phone}}</p>
+  <p><strong>Email:</strong>{{email}}</p>
 
-  <p>Your order: {{favorite_color}}.</p>
+  <h3>Ordered Items:</h3>
+  <ul style="list-style-type:none;">
+    {% for item in ordered_items %}
+    <li>{{item}}</li>
+    {% endfor %}
+  </ul>
+
+  <p><strong>Total Price:</strong> ${{total_price}}</p>
+
+  <p><strong>Order Time:</strong> {{ current_time }}</p>
+  <p><strong>Expected Ready Time:</strong> {{ ready_time }}</p>
 
 </div>
 

@@ -8,6 +8,6 @@ from . import views
 #define a list of valid URL patterns:
 urlpatterns =[
   path(r'', views.main, name="main"),
-  path(r'submit', views.submit,name="submit" ),
+  path(r'confirmation', views.confirmation,name="confirmation" ),
   path(r'order', views.order, name="order"),
 ]
