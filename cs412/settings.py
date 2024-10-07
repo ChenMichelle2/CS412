@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "quotes", 
     "formdata",
     "restaurant", ## assignment 4
-    "blog", ## new app!!
+    "blog",
+    "mini_fb", ## new app!!
 ]
 
 MIDDLEWARE = [
