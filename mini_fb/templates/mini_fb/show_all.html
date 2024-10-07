@@ -1,0 +1,24 @@
+<!-- blog/templates/blog/show_all.html -->
+{% extends 'mini_fb/base.html' %}
+
+<!-- display a context variable called articles -->
+<!--{{articles}}-->
+
+
+
+{% block content%}
+<h1> Show all Profiles</h1>
+<main class="grid-container"><!--<div>-->
+  {% for p in Profiles %}
+
+  <article><!--<div>-->
+    <h2>{{p.first_name}} {{p.last_name}}</h2>
+    <img src="{{p.image_url}}" alt="{{p.image_url}}">
+    <p>
+      {{p.city}} </br>
+      {{p.email}}
+    </p>
+  </article>
+  {% endfor %}
+</main>
+{% endblock%}
