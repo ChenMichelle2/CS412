@@ -18,8 +18,9 @@
   </article>
 
   <div>
-    {% if Profile.get_message %}
     <h2>Status Messages</h2>
+    <a href="{% url 'create_status' Profile.pk%}">Create a Status Message</a>
+    {% if Profile.get_message %}
     <!-- call the get_comments method on the article object -->
     <!--{{article.get_comments}} -->
     {% for m in Profile.get_message %}
@@ -32,7 +33,7 @@
     </div>
     {% endfor %}
     {% else %}
-    <h2> No Status Message yet</h2>
+    <p> No Status Messages yet</p>
     {% endif %}
   </div>
 </main>

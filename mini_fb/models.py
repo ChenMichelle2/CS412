@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Profile(models.Model):
@@ -17,8 +18,8 @@ class Profile(models.Model):
     '''Rerurn a QuerySet of all Status Messages on this Profile'''
 
     #use the ORM to retrieve Status Message for which FK is this Profile
-    status = StatusMessage.objects.filter(profile=self)
-    return status
+    statusMessage = StatusMessage.objects.filter(profile=self)
+    return statusMessage
   
 class StatusMessage(models.Model):
   '''contains the status message of the profile'''
@@ -29,3 +30,4 @@ class StatusMessage(models.Model):
   def __str__(self):
     '''Return a string representation of this message object.'''
     return f'{self.message}'
+  

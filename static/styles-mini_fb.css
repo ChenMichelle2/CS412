@@ -46,6 +46,15 @@ header {
   border-bottom: 1px solid #bbc7c7;
 }
 
+.center {
+  padding-left: 50vh;
+  color: #ffffff;
+}
+
+.centering_text {
+  text-align: center;
+}
+
 .grid-container {
   background: #eee;
   max-width: 900px;
