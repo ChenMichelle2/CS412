@@ -9,9 +9,15 @@
 </head>
 
 <body>
-  <header>
-    <h1>Blog</h1>
-  </header>
+  <nav>
+    <li>
+      <ul>
+        <li><a href="{% url 'show_all_blog' %}">Show All</a></li>
+        <li> <a href="{% url 'random' %}">Random</a></li>
+        <ul>
+    </li>
+  </nav>
+
 
   {% block content %}
   {% endblock %}

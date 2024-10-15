@@ -1,0 +1,22 @@
+<!-- mini_fb/templates/mini_fb/show_profile.html
+ myichen@bu.edu
+ Shows a singular profile -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content%}
+<main class="grid-container"><!--<div>-->
+
+  <article><!--<div>-->
+    <h2>{{Profile.first_name}} {{Profile.last_name}}</h2>
+    <img src="{{Profile.image_url}}" alt="{{Profile.image_url}}" width="600px">
+    <p>
+      {{Profile.city}} </br>
+      {{Profile.email}} </br>
+
+    </p>
+  </article>
+
+
+</main>
+{% endblock%}

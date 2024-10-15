@@ -1,0 +1,46 @@
+<!-- blog/templates/blog/article.html -->
+
+{% extends 'blog/base.html' %}
+
+<!-- display a context variable called articles -->
+<!--{{articles}}-->
+
+
+
+{% block content%}
+<main class="grid-container"><!--<div>-->
+
+  <article><!--<div>-->
+    <h2>{{article.title}}</h2>
+    <h3>by {{article.author}} at {{article.published}}</h3>
+
+    <img src="{{article.image_url}}" alt="{{article.image_url}}">
+    <p>
+      {{article.text}}
+    </p>
+    <h4>
+      <a href="{% url %}"></a>
+    </h4>
+  </article>
+
+  <!-- show the comments -->
+  <div>
+    {% if article.get_comments %}
+    <h2>Comments</h2>
+    <!-- call the get_comments method on the article object -->
+    <!--{{article.get_comments}} -->
+    {% for c in article.get_comments %}
+    <div>
+
+      <strong> by {{c.author}} at {{c.published}}</strong>
+      <p>
+        {{c.text}}
+      </p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h2> No Commentss</h2>
+    {% endif %}
+  </div>
+</main>
+{% endblock%}
