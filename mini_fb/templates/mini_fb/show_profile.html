@@ -17,6 +17,23 @@
     </p>
   </article>
 
+  <div>
+    {% if Profile.get_message %}
+    <h2>Status Messages</h2>
+    <!-- call the get_comments method on the article object -->
+    <!--{{article.get_comments}} -->
+    {% for m in Profile.get_message %}
+    <div>
+      <p>
+        {{m.message}}
+      </p>
+      <strong> {{m.profile}} at {{m.timestamp}}</strong>
 
+    </div>
+    {% endfor %}
+    {% else %}
+    <h2> No Status Message yet</h2>
+    {% endif %}
+  </div>
 </main>
 {% endblock%}
