@@ -59,4 +59,19 @@ class CreateStatusMessageView(CreateView):
     # Redirect to the profile's detail page after posting the status
     return reverse('show_profile', args=[self.kwargs['pk']])
   
+class UpdateProfileView(UpdateView):
+  '''Updates the Profile from the form'''
+  model = Profile
+  form_class = UpdateProfileForm
+  template_name = 'mini_fb/update_profile_form.html'
+
+  def get_success_url(self):
+    # Redirect to the profile's detail page after updating the profile
+    return reverse('show_profile', args=[self.object.pk])
+
+  def get_context_data(self, **kwargs):
+    # Add any extra context for the template, like the profile object
+    context = super().get_context_data(**kwargs)
+    context['profile'] = self.object  # Pass the profile to the template
+    return context
 
