@@ -14,12 +14,11 @@
     <h2>{{article.title}}</h2>
     <h3>by {{article.author}} at {{article.published}}</h3>
 
-    <img src="{{article.image_url}}" alt="{{article.image_url}}">
+    <img src="{{article.image_file.url}}" alt="{{article.image_file.url}}">
     <p>
       {{article.text}}
     </p>
     <h4>
-      <a href="{% url %}"></a>
     </h4>
   </article>
 

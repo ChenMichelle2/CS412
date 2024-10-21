@@ -10,6 +10,7 @@ class Profile(models.Model):
   city = models.TextField(blank=False)
   email = models.TextField(blank=False)
   image_url = models.URLField(blank=True)
+  
 
   def __str__(self):
     return f'{self.first_name} {self.last_name}'
@@ -27,7 +28,19 @@ class StatusMessage(models.Model):
   message = models.TextField(blank=False)
   profile = models.ForeignKey("Profile", on_delete=models.CASCADE)
 
+  def get_images(self):
+    '''returns a QuerySet of all related images'''    
+    return self.images.all()  # This returns a QuerySet of all related images
+
   def __str__(self):
     '''Return a string representation of this message object.'''
     return f'{self.message}'
   
+class Image(models.Model):
+  '''contains image files for status message'''
+  image_file = models.ImageField(upload_to='status_images/')
+  uploaded_at = models.DateTimeField(auto_now=True)
+  status_message = models.ForeignKey(StatusMessage, related_name='images', on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"Image for StatusMessage ID {self.status_message.id} uploaded at {self.uploaded_at}"

@@ -66,3 +66,9 @@ class CreateCommentView(CreateView):
 
     #delegate work to the superclass version of this method
     return super().form_valid(form)
+  
+class CreateArticleView(CreateView):
+  '''A view class to create a new Article instance'''
+
+  form_class = CreateArticleForm
+  template_name = 'blog/create_article_form.html'
