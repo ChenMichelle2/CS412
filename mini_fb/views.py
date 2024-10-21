@@ -74,4 +74,27 @@ class UpdateProfileView(UpdateView):
     context = super().get_context_data(**kwargs)
     context['profile'] = self.object  # Pass the profile to the template
     return context
+  
+class DeleteStatusMessageView(DeleteView):
+  '''deletes a status message'''
+  model = StatusMessage
+  template_name = 'mini_fb/delete_status_form.html'
+  context_object_name = 'status_message'
+  
+  def get_success_url(self):
+    '''Redirect to the profile page of the user who owns this status message'''
+    profile_id = self.object.profile.pk  # Get the profile ID associated with the status message
+    return reverse('show_profile', args=[profile_id])
+  
+class UpdateStatusMessageView(UpdateView):
+  '''updates a status message'''
+  model = StatusMessage
+  template_name = 'mini_fb/update_status_form.html'
+  form_class = UpdateStatusMessageForm
+  context_object_name = 'status_message'
+  
+  def get_success_url(self):
+    '''Redirect to the profile page of the user who owns this status message'''
+    profile_id = self.object.profile.pk  # Get the profile ID associated with the status message
+    return reverse('show_profile', args=[profile_id])
 

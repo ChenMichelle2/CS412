@@ -35,7 +35,16 @@
       </div>
       {% endfor %}
       <strong> {{m.profile}} at {{m.timestamp}}</strong>
+      <!-- Add the delete link for each status message -->
+      <p>
+      <table>
+        <td><button type="submit"><a href="{% url 'update_status_message' m.pk %}"> Update </a></button></td>
+        <td></td>
+        <td><button type="submit"><a href="{% url 'delete_status' m.pk %}">Delete</a></button></td>
 
+      </table>
+
+      </p>
     </div>
     {% endfor %}
     {% else %}

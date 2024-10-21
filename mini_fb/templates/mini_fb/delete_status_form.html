@@ -1,0 +1,26 @@
+<!-- 
+ mini_fb/templates/mini_fb/delete_status_form.html
+ myichen@bu.edu
+ -->
+{% extends 'mini_fb/base.html' %}
+{% block content %}
+<h1>Confirm Delete Status Message</h1>
+
+<div class='center'>
+  <p> Are you sure you want to delete the status message?</p>
+  <!-- Show the status message content -->
+  <p><strong>{{ status_message.message }}</strong></p>
+  <p><em>Posted on: {{status_message.timestamp }}</em></p>
+
+  <!-- Form to confirm the deletion -->
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+  </form>
+
+  <!-- Form to cancel the deletion -->
+  <form method="GET" action="{% url 'show_profile' status_message.profile.pk %}">
+    <button type="submit">Cancel</button>
+  </form>
+</div>
+{% endblock %}

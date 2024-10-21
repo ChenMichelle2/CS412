@@ -17,6 +17,10 @@ body {
   margin: -40px 0 0px -60px;
 }
 
+td {
+  padding: 10px;
+}
+
 ul,
 li {
   padding: 0px;
