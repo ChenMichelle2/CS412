@@ -21,6 +21,12 @@ class ShowProfilePageView(DetailView):
   template_name = 'mini_fb/show_profile.html'
   context_object_name = 'Profile' #how to find the data in the template file
 
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)    
+    profile = self.get_object()
+    context['friends'] = profile.get_friends()  # Call the get_friends method from Profile model
+    return context
+
 class CreateProfileView(CreateView):
   model = Profile
   form_class = CreateProfileForm

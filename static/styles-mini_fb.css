@@ -70,6 +70,32 @@ header {
   margin: 20px auto;
 }
 
+.friends-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding: 10px;
+}
+
+/* Friend item styling */
+.friend-item {
+  text-align: center;
+}
+
+.friend-img {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.friend-name {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #333;
+}
+
 article.featured {
   grid-column: span 3;
   display: grid;

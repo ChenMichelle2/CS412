@@ -50,7 +50,24 @@
     {% else %}
     <p> No Status Messages yet</p>
     {% endif %}
-
+    <!-- Friends Section -->
+    <h2>{{Profile.first_name}}'s Friends</h2>
+    {% if friends %}
+    <div class="friends-list">
+      {% for friend in friends %}
+      <div class="friend-item">
+        <a href="{% url 'show_profile' friend.id %}">
+          {% if friend.image_url %}
+          <img src="{{ friend.image_url }}" alt="{{ friend.first_name }}'s Profile Picture" class="friend-img">
+          {% endif %}
+          <p class="friend-name">{{ friend.first_name }} {{ friend.last_name }}</p>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>This user has no friends yet.</p>
+    {% endif %}
   </div>
 </main>
 {% endblock%}

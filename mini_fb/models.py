@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 
 # Create your models here.
 
@@ -21,6 +21,15 @@ class Profile(models.Model):
     #use the ORM to retrieve Status Message for which FK is this Profile
     statusMessage = StatusMessage.objects.filter(profile=self)
     return statusMessage
+  def get_friends(self):
+    '''Returns a list of Profiles who are friends with this Profile'''  
+    friends_as_profile1 = Friend.objects.filter(profile1=self)
+    friends_as_profile2 = Friend.objects.filter(profile2=self)
+  
+    friends = [relation.profile2 for relation in friends_as_profile1]
+    friends += [relation.profile1 for relation in friends_as_profile2]
+
+    return friends
   
 class StatusMessage(models.Model):
   '''contains the status message of the profile'''
@@ -44,3 +53,12 @@ class Image(models.Model):
 
   def __str__(self):
     return f"Image for StatusMessage ID {self.status_message.id} uploaded at {self.uploaded_at}"
+
+class Friend(models.Model):
+  '''encapsulates the idea of an edge connecting two nodes within the social network'''
+  profile1 = models.ForeignKey(Profile, related_name="profile1", on_delete=models.CASCADE)
+  profile2 = models.ForeignKey(Profile, related_name="profile2", on_delete=models.CASCADE)
+  timestamp = models.DateTimeField(default=timezone.now)
+
+  def __str__(self):
+        return f"{self.profile1} & {self.profile2}"
