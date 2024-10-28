@@ -50,6 +50,10 @@
     {% else %}
     <p> No Status Messages yet</p>
     {% endif %}
+    <!-- Link to view friend suggestions -->
+    <p>
+      <a href="{% url 'friend_suggestions' Profile.pk %}">See Friend Suggestions</a>
+    </p>
     <!-- Friends Section -->
     <h2>{{Profile.first_name}}'s Friends</h2>
     {% if friends %}

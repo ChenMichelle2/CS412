@@ -1,0 +1,39 @@
+<!-- 
+ mini_fb/templates/mini_fb/friend_suggestions.html
+ myichen@bu.edu
+ -->
+{% extends 'mini_fb/base.html' %}
+{% block content %}
+<main class="container">
+  <div class="centering_text">
+    <h2>Friend Suggestions for {{ profile.first_name }} {{ profile.last_name }}</h2>
+
+
+
+    <!-- Link to go back to the profile page -->
+    <p>
+      <a href="{% url 'show_profile' profile.pk %}">Back to Profile</a>
+    </p>
+
+    {% if friend_suggestions %}
+
+    <div class="friend-suggestions-list">
+      {% for suggestion in friend_suggestions %}
+      <div class="friend-item">
+        <div>
+          {% if suggestion.image_url %}
+          <img src="{{ suggestion.image_url }}" alt="{{ suggestion.first_name }}'s Profile Picture" class="friend-img">
+          {% endif %}
+          <p>{{ suggestion.first_name }} {{ suggestion.last_name }}</p>
+          <!-- Link to add the suggested friend -->
+          <a href="{% url 'add_friend' profile.pk suggestion.pk %}">Add Friend</a>
+        </div>
+      </div>
+      {% endfor %}
+
+      {% else %}
+      <p>No friend suggestions available.</p>
+      {% endif %}
+    </div>
+</main>
+{% endblock %}

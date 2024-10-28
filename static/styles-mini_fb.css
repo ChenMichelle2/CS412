@@ -55,6 +55,7 @@ header {
   color: #ffffff;
 }
 
+
 .centering_text {
   text-align: center;
 }
@@ -70,12 +71,27 @@ header {
   margin: 20px auto;
 }
 
+.container {
+  background-color: #eee;
+  height: 500px;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
 .friends-list {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: start;
   padding: 10px;
+}
+
+.friend-suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
 /* Friend item styling */

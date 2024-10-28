@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 # Create your views here.
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import *
 from .models import *
 from .forms import *
@@ -104,3 +105,36 @@ class UpdateStatusMessageView(UpdateView):
     profile_id = self.object.profile.pk  # Get the profile ID associated with the status message
     return reverse('show_profile', args=[profile_id])
 
+class CreateFriendView(View):
+  """Adds a friend relationship between two profiles based on URL parameters"""
+  def dispatch(self, request, *args, **kwargs):
+    pk = self.kwargs.get('pk')
+    other_pk = self.kwargs.get('other_pk')
+        
+    profile = get_object_or_404(Profile, pk=pk)
+    other_profile = get_object_or_404(Profile, pk=other_pk)
+
+    # Check for self-friending
+    if profile == other_profile:
+      print("Cannot add self as a friend.")
+    else:
+      # Add friend only if it doesn't already exist
+      if profile.add_friend(other_profile):
+        print("Friendship created successfully.")
+      else:
+        print("Friendship already exists.")
+
+      # Redirect back to the profile page
+      return redirect(reverse('show_profile', kwargs={'pk': pk}))  
+class ShowFriendSuggestionsView(DetailView):
+  """Displays friend suggestions for a single profile."""
+  model = Profile
+  template_name = 'mini_fb/friend_suggestions.html'
+  context_object_name = 'profile'
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    profile = self.get_object()
+    context['friend_suggestions'] = profile.get_friend_suggestions()
+    return context
+    
