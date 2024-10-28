@@ -18,6 +18,10 @@
   </article>
 
   <div>
+    <!-- Link to view the news feed -->
+    <p>
+      <a href="{% url 'news_feed' Profile.pk %}">See News Feed</a>
+    </p>
     <h2>Status Messages</h2>
     <a href="{% url 'create_status' Profile.pk%}">Create a Status Message</a>
     {% if Profile.get_message %}

@@ -1,0 +1,38 @@
+<!-- 
+ mini_fb/templates/mini_fb/news_feed.html
+ myichen@bu.edu
+ -->
+{% extends 'mini_fb/base.html' %}
+{% block content %}
+<main class="container">
+  <div class="centering_text">
+    <h2>News Feed for {{ profile.first_name }} {{ profile.last_name }}</h2>
+
+    <!-- Link to navigate around mini_fb -->
+    <p>
+      <a href="{% url 'show_all_profiles' %}">All Profiles</a>
+      <a href="{% url 'show_profile' profile.pk %}">Profile Page</a>
+    </p>
+
+    {% if news_feed %}
+    <div class="news-feed-list">
+      {% for status in news_feed %}
+      <div class="news-item">
+        <div class="profile-info">
+          {% if status.profile.image_url %}
+          <img src="{{ status.profile.image_url }}" alt="{{ status.profile.first_name }}'s Profile Picture"
+            class="profile-img">
+          {% endif %}
+          <p>{{ status.profile.first_name }} {{ status.profile.last_name }}</p>
+        </div>
+        <p>{{ status.message }}</p>
+        <p><small>Posted on {{ status.timestamp }}</small></p>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No status updates available.</p>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

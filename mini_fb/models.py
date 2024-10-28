@@ -63,6 +63,14 @@ class Profile(models.Model):
       return True  # Return True if a new friendship was created
 
     return False  # Return False if a friendship already exists
+  def get_news_feed(self):
+    '''Returns a QuerySet of StatusMessages for the Profile and its friends, ordered by timestamp'''
+    friends = self.get_friends()  
+    status_messages = StatusMessage.objects.filter(
+            profile__in=[self] + list(friends)
+        ).order_by('-timestamp') 
+
+    return status_messages
   
 class StatusMessage(models.Model):
   '''contains the status message of the profile'''
