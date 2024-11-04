@@ -15,15 +15,23 @@
       {{Profile.email}} </br>
 
     </p>
+    {% if user.is_authenticated and user == Profile.user %}
+    <h2><a href="{% url 'update_profile' Profile.pk %}">Update Profile</a></h2>
+    {% endif %}
   </article>
 
   <div>
     <!-- Link to view the news feed -->
+    {% if user.is_authenticated and user == Profile.user %}
     <p>
       <a href="{% url 'news_feed' Profile.pk %}">See News Feed</a>
     </p>
+    {% endif %}
+
     <h2>Status Messages</h2>
+    {% if user.is_authenticated and user == Profile.user %}
     <a href="{% url 'create_status' Profile.pk%}">Create a Status Message</a>
+    {% endif %}
     {% if Profile.get_message %}
     <!-- call the get_comments method on the article object -->
     <!--{{article.get_comments}} -->
@@ -41,13 +49,14 @@
       <strong> {{m.profile}} at {{m.timestamp}}</strong>
       <!-- Add the delete link for each status message -->
       <p>
+        {% if user.is_authenticated and user == Profile.user %}
       <table>
         <td><button type="submit"><a href="{% url 'update_status_message' m.pk %}"> Update </a></button></td>
 
         <td><button type="submit"><a href="{% url 'delete_status' m.pk %}">Delete</a></button></td>
 
       </table>
-
+      {% endif %}
       </p>
     </div>
     {% endfor %}
@@ -55,9 +64,12 @@
     <p> No Status Messages yet</p>
     {% endif %}
     <!-- Link to view friend suggestions -->
+    {% if user.is_authenticated and user == Profile.user %}
     <p>
       <a href="{% url 'friend_suggestions' Profile.pk %}">See Friend Suggestions</a>
     </p>
+    {% endif %}
+
     <!-- Friends Section -->
     <h2>{{Profile.first_name}}'s Friends</h2>
     {% if friends %}

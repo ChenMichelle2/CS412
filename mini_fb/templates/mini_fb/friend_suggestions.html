@@ -4,6 +4,7 @@
  -->
 {% extends 'mini_fb/base.html' %}
 {% block content %}
+
 <main class="container">
   <div class="centering_text">
     <h2>Friend Suggestions for {{ profile.first_name }} {{ profile.last_name }}</h2>
@@ -30,7 +31,6 @@
         </div>
       </div>
       {% endfor %}
-
       {% else %}
       <p>No friend suggestions available.</p>
       {% endif %}

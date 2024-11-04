@@ -12,11 +12,30 @@
   <nav>
     <li>
       <ul>
+        <!-- URLs that do not depend on authentication status -->
         <li><a href="{% url 'show_all_blog' %}">Show All</a></li>
-        <li> <a href="{% url 'random' %}">Random</a></li>
+        <li><a href="{% url 'random' %}">Random</a></li>
+        <!-- URLs that depend on authentication status -->
+        {% if request.user.is_authenticated %}
         <li><a href="{% url 'create_article' %}">Create Article</a></li>
-        <ul>
+        <!--<li><a href="{% url 'logout' %}">Log out</a></li>-->
+        <form action="{% url 'logout' %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" value="Logout">
+        </form>
+        {% else %}
+        <li><a href="{% url 'login' %}">Log in</a></li>
+        {% endif %}
+      </ul>
     </li>
+    <p>
+      <!-- request is teh HTTP request-->
+      {% if request.user.is_authenticated %}
+      Logged in user: {{ request.user }}.
+      {% else %}
+      Not logged in.
+      {% endif %}
+    </p>
   </nav>
 
 

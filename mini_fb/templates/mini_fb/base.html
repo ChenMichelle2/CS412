@@ -16,11 +16,29 @@
     </a>
 
     <div class="centering_text">
-      <a href="{% url 'create_profile' %}">
-        <h3>Create Profile</h3>
-      </a>
-
+      <li>
+        <!-- URLs that depend on authentication status -->
+        {% if request.user.is_authenticated %}
+      <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
+      <!--<li><a href="{% url 'logout' %}">Log out</a></li>-->
+      <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+      </form>
+      {% else %}
+      <li><a href="{% url 'login' %}">Log in</a></li>
+      {% endif %}
+      </li>
     </div>
+    <p>
+      <!-- request is teh HTTP request-->
+      {% if request.user.is_authenticated %}
+      Logged in user: {{ request.user }}.
+      {% else %}
+      Not logged in.
+      {% endif %}
+
+    </p>
   </header>
 
   {% block content %}
