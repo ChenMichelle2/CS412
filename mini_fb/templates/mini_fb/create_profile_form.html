@@ -7,13 +7,15 @@
     <!-- show this first -->
 
     <table>
-      <!-- creates form as table -->
-      {{form.as_table}}
+      {% csrf_token %}
 
-      <tr>
-        <td></td>
-        <td><input type="submit" name="submit" value="Create Profile"></td>
-      </tr>
+      <h2>Create User</h2>
+      {{ user_creation_form.as_p }}
+
+      <h2>Create Profile</h2>
+      {{ form.as_p }}
+
+      <button type="submit">Submit</button>
     </table>
 
     {% csrf_token %}

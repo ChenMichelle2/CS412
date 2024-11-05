@@ -1,6 +1,9 @@
 # mini_fb/views.py
 from django.shortcuts import render
 from django.urls import reverse
+from django.http.request import HttpRequest as HttpRequest
+from django.http.response import HttpResponse as HttpResponse
+from typing import Any
 
 # Create your views here.
 from django.shortcuts import get_object_or_404, redirect
@@ -46,9 +49,22 @@ class CreateProfileView(CreateView):
   model = Profile
   form_class = CreateProfileForm
   template_name = 'mini_fb/create_profile_form.html'
+  def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_creation_form'] = UserCreationForm()
+        return context
+
+  def form_valid(self, form):
+        user_form = UserCreationForm(self.request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save()
+            form.instance.user = new_user
+            return reverse('show_all_profiles')
+        else:
+            return self.form_invalid(form)
   def get_absolute_url(self):
     '''Return the URL to redirect to after successfully submitting the form.'''
-    return reverse('show_profile', args=[str(self.object.pk)])
+    return reverse('show_all_profiles')
   
 class CreateStatusMessageView(LoginRequiredMixin,CreateView):
   model = StatusMessage
