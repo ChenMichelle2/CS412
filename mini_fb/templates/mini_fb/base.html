@@ -19,14 +19,17 @@
       <li>
         <!-- URLs that depend on authentication status -->
         {% if request.user.is_authenticated %}
+      <li><a href="{% url 'show_profile' profile.pk % }"> My Profile</a></li>
       <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
       <!--<li><a href="{% url 'logout' %}">Log out</a></li>-->
-      <form action="{% url 'logout' %}" method="POST">
+      <form action="{% url 'mini_fb_logout' %}" method="POST">
         {% csrf_token %}
         <input type="submit" value="Logout">
       </form>
       {% else %}
-      <li><a href="{% url 'login' %}">Log in</a></li>
+      <li>
+        <button><a href="{% url 'mini_fb_login' %}">Log in</a></button>
+      </li>
       {% endif %}
       </li>
     </div>

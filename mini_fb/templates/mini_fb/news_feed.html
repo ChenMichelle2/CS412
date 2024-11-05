@@ -6,12 +6,12 @@
 {% block content %}
 <main class="container">
   <div class="centering_text">
-    <h2>News Feed for {{ profile.first_name }} {{ profile.last_name }}</h2>
+    <h2>News Feed</h2>
 
     <!-- Link to navigate around mini_fb -->
     <p>
       <a href="{% url 'show_all_profiles' %}">All Profiles</a>
-      <a href="{% url 'show_profile' profile.pk %}">Profile Page</a>
+
     </p>
 
     {% if news_feed %}
