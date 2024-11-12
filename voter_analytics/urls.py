@@ -1,0 +1,9 @@
+from django.urls import path
+from django.conf import settings
+from . import views
+
+#define a list of valid URL patterns:
+urlpatterns =[
+  path(r'', views.ShowVoters.as_view(), name="home"),
+  path(r'voters', views.ShowVoters.as_view(), name = "voters")
+]
