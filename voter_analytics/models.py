@@ -30,6 +30,8 @@ class Voter(models.Model):
     def __str__(self):
         '''Return a string representation of this model instance.'''
         return f'{self.first_name} {self.last_name} (Precinct: {self.precinct_number}, Party: {self.party_affiliation}, Score: {self.voter_score})'
+    
+
 
 def load_data():
     '''Load data records from a CSV file into Voter model instances.'''

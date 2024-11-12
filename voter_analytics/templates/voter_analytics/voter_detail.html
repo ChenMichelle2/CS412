@@ -1,7 +1,10 @@
+<!-- voter_analytics/templates/voter_analytics/voter_detail.html 
+ bu email: myichen@bu.edu
+ html page for indivisual voter's details -->
 {% extends 'voter_analytics/base.html' %}
 {% block content %}
 <div class="container">
-  <h1>Voter Detail for {{ voter.first_name }} {{ voter.last_name }}</h1>
+  <h1>Voter Details for {{ voter.first_name }} {{ voter.last_name }}</h1>
   <ul>
     <li><strong>First Name:</strong> {{ voter.first_name }}</li>
     <li><strong>Last Name:</strong> {{ voter.last_name }}</li>

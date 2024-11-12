@@ -1,0 +1,29 @@
+<!-- voter_analytics/templates/voter_analytics/graphs.html 
+ bu email: myichen@bu.edu
+ html page to show the graphs based on the voters  data -->
+
+{% extends 'voter_analytics/base.html' %}
+{% block content %}
+<div class="container">
+  <h1>Voter Data Graphs</h1>
+  <!-- Filtering form -->
+  <div class="row">
+    <div>
+      {% include 'voter_analytics/search_graph.html' %}
+    </div>
+  </div>
+
+  <div>
+    <h2>Distribution of Voters by Year of Birth</h2>
+    {{ birth_year_div|safe }}
+  </div>
+  <div>
+    <h2>Distribution of Voters by Party Affiliation</h2>
+    {{ party_affiliation_div|safe }}
+  </div>
+  <div>
+    <h2>Distribution of Voters by Election Participation</h2>
+    {{ election_participation_div|safe }}
+  </div>
+</div>
+{% endblock %}

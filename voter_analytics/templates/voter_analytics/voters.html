@@ -1,15 +1,16 @@
+<!-- voter_analytics/templates/voter_analytics/voters.html 
+ bu email: myichen@bu.edu
+ home page that displays all the voters by 100 a page -->
 {% extends 'voter_analytics/base.html' %}
 {% block content %}
 <div class="container">
   <h1>Voters</h1>
   <!-- Filtering form -->
   <div class="row">
-    <form method="get" action=".">
-      {{ form.as_p }}
-      <button type="submit">Filter</button>
-    </form>
+    <div>
+      {% include 'voter_analytics/search.html' %}
+    </div>
   </div>
-
   <!-- Voter listing -->
   <div class="row">
     <table>
