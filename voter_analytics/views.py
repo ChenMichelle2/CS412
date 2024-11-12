@@ -13,7 +13,7 @@ class ShowVoters(ListView):
   model= Voter
   template_name = 'voter_analytics/voters.html'
   context_object_name = 'voters'
-  paginate_by = 50
+  paginate_by = 100
     
   #def get_queryset(self):
         
@@ -55,4 +55,14 @@ class ShowVoters(ListView):
         context = super().get_context_data(**kwargs)
         context['form'] = VoterFilterForm(self.request.GET)
         return context
+  
+class VoterDetailView(DetailView):
+    model = Voter
+    template_name = 'voter_analytics/voter_detail.html'
+    context_object_name = 'voter'
+
+    def get_queryset(self):
+        
+        qs = super().get_queryset()
+        return qs
 

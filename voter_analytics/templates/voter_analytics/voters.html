@@ -24,7 +24,9 @@
 
       {% for v in voters %}
       <tr>
-        <td>{{v.first_name}} {{v.last_name}}</a></td>
+        <td><a href="{% url 'voter_details' v.pk %}">
+            {{ v.first_name }} {{ v.last_name }}
+          </a></td>
         <td>{{v.residential_street_number}} {{v.residential_street_name}} Apartment #:
           {{v.residential_apartment_number}},
           {{v.residential_zip_code}}</td>
