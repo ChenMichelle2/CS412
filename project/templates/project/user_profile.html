@@ -1,0 +1,36 @@
+<!-- project/templates/project/user_profile.html 
+ bu email: myichen@bu.edu
+ Base html for the other templates -->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h1>User Profile</h1>
+
+<div class="profile-card">
+  <div class="profile-image">
+    {% if profile.image_url %}
+    <img src="{{ profile.image_url }}" alt="Profile Image" width="200 px">
+    {% else %}
+    <p>No profile image available</p>
+    {% endif %}
+  </div>
+  <div class="profile-details">
+    <h2>{{ profile.user.username }}</h2>
+  </div>
+  <!-- Wishlist Section -->
+  <h2>Your Wishlist</h2>
+  <ul>
+    {% for item in wishlist %}
+    <li>
+      <img src="{{ item.dragon.image_url }}" alt="{{ item.dragon.name }}" width="100"><br>
+      <strong>{{ item.dragon.name }}</strong> ({{ item.parent_1 }} + {{ item.parent_2 }})
+      <p>Added on: {{ item.date_added|date:"M d, Y H:i" }}</p>
+    </li>
+
+    {% endfor %}
+  </ul>
+
+
+</div>
+{% endblock %}

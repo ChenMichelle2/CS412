@@ -1,0 +1,21 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h1>Create Account and Profile</h1>
+<div class="center">
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      <!-- User creation form -->
+      <h2>Create User</h2>
+      {{ user_form.as_p }}
+
+      <!-- Profile creation form -->
+      <h2>Create Profile</h2>
+      {{ profile_form.as_p }}
+
+      <button type="submit">Submit</button>
+    </table>
+  </form>
+</div>
+{% endblock %}

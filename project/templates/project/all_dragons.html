@@ -1,0 +1,19 @@
+<!-- project/templates/project/all_dragons.html 
+ bu email: myichen@bu.edu
+ Base html for the other templates -->
+
+{% extends 'project/base.html' %}
+{% block content %}
+<h1>Dragons</h1>
+
+<div class="dragon-grid">
+  {% for d in dragons %}
+  <div class="dragon-card">
+    <img src="{{ d.image_url }}" alt="{{ d.name }}">
+    <h2>{{ d.name }}</h2>
+    <h3>Combination: {{ d.combo }}</h3>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

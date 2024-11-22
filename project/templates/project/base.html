@@ -1,0 +1,44 @@
+<!-- project/templates/project/base.html 
+ bu email: myichen@bu.edu
+ Base html for the other templates -->
+{% load static %}
+<html>
+
+<head>
+  <title> DragonVale WishList </title>
+  <link rel="stylesheet" href="{% static 'styles-project.css' %}">
+</head>
+
+<body>
+  <header>
+    <a href="{% url 'Show_All_Dragons' %}">
+      <h2>DragonVale WishList</h2>
+    </a>
+
+    <li>
+
+    </li>
+  </header>
+  <nav>
+    <a href="{% url 'Show_All_Dragons' %}">Show All Dragons</a>
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}!</p>
+    <a href="{% url 'Dragon_User_Profile' %}">
+      My Profile
+    </a>
+
+    <!-- Logout Form -->
+    <form action="{% url 'logout' %}" method="post" style="display:inline;">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'create profile dragon' %}"> Create Account</a>
+    {% endif %}
+  </nav>
+  {% block content %}
+  {% endblock %}
+</body>
+
+</html>

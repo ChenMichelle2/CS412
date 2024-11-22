@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "restaurant", ## assignment 4
     "blog",
     "mini_fb",
-    "voter_analytics", ## new app!!
+    "voter_analytics",
+    "project", ## new app!!
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                
             ],
         },
     },
@@ -137,3 +139,4 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+

@@ -1,0 +1,64 @@
+body {
+  text-align: center;
+  background-color: #f0f8ff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for the grid */
+.dragon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Responsive columns */
+  gap: 20px;
+  /* Space between items */
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+  /* Limit the grid's width */
+}
+
+/* Individual dragon cards */
+.dragon-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  overflow: hidden;
+  /* Ensure the image stays within the card */
+  text-align: center;
+  padding: 10px;
+}
+
+/* Dragon images */
+.dragon-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  /* Border under the image */
+  margin-bottom: 10px;
+}
+
+/* Dragon name */
+.dragon-card h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Dragon combo */
+.dragon-card h3 {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Add a hover effect for cards */
+.dragon-card:hover {
+  transform: scale(1.05);
+  /* Slight zoom effect */
+  transition: transform 0.3s ease;
+}
