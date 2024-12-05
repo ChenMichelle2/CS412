@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(Profile)
 admin.site.register(Dragon)
 admin.site.register(Wishlist)
+admin.site.register(FavoriteDragon)

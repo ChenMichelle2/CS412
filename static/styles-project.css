@@ -62,3 +62,136 @@ body {
   /* Slight zoom effect */
   transition: transform 0.3s ease;
 }
+
+/* Container for the profile page */
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Profile Info Section */
+.profile-info {
+  flex: 1;
+  /* Take up 1/3rd of the space */
+  max-width: 300px;
+  /* Limit the width of the profile section */
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Image */
+.profile-image {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Profile Wishlist Section */
+.profile-wishlist {
+  flex: 2;
+  /* Take up 2/3rds of the space */
+  width: 100%;
+  /* Default to full width for smaller screens */
+}
+
+/* Mini Container for the grid */
+.mini-dragon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  /* Smaller column width */
+  gap: 10px;
+  /* Less space between items */
+  padding: 10px;
+  /* Smaller padding */
+  margin: 0 auto;
+  max-width: 800px;
+  /* Smaller grid width */
+}
+
+/* Mini dragon cards */
+.mini-dragon-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Smaller shadow */
+  overflow: hidden;
+  text-align: center;
+  padding: 5px;
+  /* Reduced padding */
+}
+
+/* Mini dragon images */
+.mini-dragon-card img {
+  width: 80%;
+  /* Slightly smaller images */
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px;
+}
+
+/* Mini dragon name */
+.mini-dragon-card h2 {
+  font-size: 1rem;
+  /* Smaller font size */
+  color: #333;
+  margin: 5px 0;
+}
+
+/* Mini dragon combo */
+.mini-dragon-card h3 {
+  font-size: 0.8rem;
+  /* Smaller font size */
+  color: #555;
+  margin: 0;
+}
+
+/* Add a hover effect for mini cards */
+.mini-dragon-card:hover {
+  transform: scale(1.03);
+  /* Slight hover zoom */
+  transition: transform 0.2s ease;
+}
+
+
+nav {
+  background-color: rgb(78, 99, 99);
+
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline-block;
+  margin-left: 0px;
+}
+
+.nav-links li a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+  background-color: #7cd3ff;
+}
+
+.content {
+  padding: 50px 0;
+  text-align: center;
+}

@@ -12,6 +12,8 @@ class Profile(models.Model):
   def __str__(self):
     return f'{self.user.username}'
   
+
+  
 class Dragon(models.Model):
   '''encapsulates the idea of a dragon and its attributes'''
   name = models.CharField(max_length=100, unique=True)
@@ -24,6 +26,14 @@ class Dragon(models.Model):
 
   def __str__(self):
     return self.name
+  
+class FavoriteDragon(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='favorites')
+    dragon = models.ForeignKey(Dragon, on_delete=models.CASCADE, related_name='favorited_by')
+    added_on = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.profile.user.username} - {self.dragon.name}"
   
 class Wishlist(models.Model):
    

@@ -73,7 +73,7 @@ def CreateUserAndProfile(request):
             profile.user = user
             profile.save()
 
-            return redirect('/project/show_all_dragons/')  # Redirect to the profile page after creation
+            return redirect('/project/login/')  # Redirect to the profile page after creation
 
     else:
         # Instantiate empty forms for a GET request
@@ -84,3 +84,24 @@ def CreateUserAndProfile(request):
         'user_form': user_form,
         'profile_form': profile_form,
     })
+
+class AddToWishlistView(LoginRequiredMixin, FormView):
+    template_name = 'project/add_wishlist.html'
+    form_class = AddWishlist
+    success_url = '../me'  # Redirect to profile
+    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        # Exclude dragons already in the user's wishlist
+        profile = self.request.user.profile_project
+        form.fields['dragon'].queryset = Dragon.objects.exclude(
+            id__in=profile.wishlists.values_list('dragon_id', flat=True)
+        )
+        return form
+
+    def form_valid(self, form):
+        # Save the wishlist item with the user's profile
+        wishlist_item = form.save(commit=False)
+        wishlist_item.profile = self.request.user.profile_project
+        wishlist_item.save()
+        return super().form_valid(form)

@@ -18,19 +18,27 @@
   <div class="profile-details">
     <h2>{{ profile.user.username }}</h2>
   </div>
-  <!-- Wishlist Section -->
-  <h2>Your Wishlist</h2>
-  <ul>
-    {% for item in wishlist %}
-    <li>
-      <img src="{{ item.dragon.image_url }}" alt="{{ item.dragon.name }}" width="100"><br>
-      <strong>{{ item.dragon.name }}</strong> ({{ item.parent_1 }} + {{ item.parent_2 }})
-      <p>Added on: {{ item.date_added|date:"M d, Y H:i" }}</p>
-    </li>
-
-    {% endfor %}
-  </ul>
-
-
 </div>
+<!-- Wishlist Section -->
+<h2>Your Wishlist</h2>
+<a href="{% url 'Add to Wishlist'%}">Add Dragons to Wishlist</a>
+{% if wishlist %}
+<ul>
+
+  <div class="mini-dragon-grid">
+    {% for item in wishlist %}
+    <div class="mini-dragon-card">
+      <img src="{{ item.dragon.image_url }}" alt="{{ item.dragon.name }}">
+      <h2>{{ item.dragon.name }}</h2>
+      <h3>Combo: {{ item.parent_1 }} + {{ item.parent_2 }}</h3>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  {% else %}
+  <p>No dragons are on your wishlist yet</p>
+  {% endif %}
+</ul>
+
 {% endblock %}

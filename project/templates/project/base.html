@@ -11,32 +11,32 @@
 
 <body>
   <header>
+    <nav class="navbar-fixed-top">
+      <ul class="nav-links">
+        <li> <a href="{% url 'Show_All_Dragons' %}">Show All Dragons</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'Dragon_User_Profile' %}">My Profile</a></li>
+
+        <!-- Logout Form -->
+        <li>
+          <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+          </form>
+          <a href="{% url 'logout' %}" onclick="document.getElementById('logout-form').submit();">
+            Logout
+          </a>
+        </li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'create profile dragon' %}"> Create Account</a></li>
+        {% endif %}
+      </ul>
+    </nav>
     <a href="{% url 'Show_All_Dragons' %}">
       <h2>DragonVale WishList</h2>
     </a>
-
-    <li>
-
-    </li>
   </header>
-  <nav>
-    <a href="{% url 'Show_All_Dragons' %}">Show All Dragons</a>
-    {% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }}!</p>
-    <a href="{% url 'Dragon_User_Profile' %}">
-      My Profile
-    </a>
 
-    <!-- Logout Form -->
-    <form action="{% url 'logout' %}" method="post" style="display:inline;">
-      {% csrf_token %}
-      <button type="submit">Logout</button>
-    </form>
-    {% else %}
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'create profile dragon' %}"> Create Account</a>
-    {% endif %}
-  </nav>
   {% block content %}
   {% endblock %}
 </body>
