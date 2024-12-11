@@ -6,10 +6,12 @@
 {% block content %}
 <h1>Dragons</h1>
 
+{% include 'project/search_dragons.html' %}
+
 <div class="dragon-grid">
   {% for d in dragons %}
   <div class="dragon-card">
-    <img src="{{ d.image_url }}" alt="{{ d.name }}">
+    <a href="{{ d.wiki_url }}" target="_blank"> <img src="{{ d.image_url }}" alt="{{ d.name }}"> </a>
     <h2>{{ d.name }}</h2>
     <h3>Combination: {{ d.combo }}</h3>
   </div>

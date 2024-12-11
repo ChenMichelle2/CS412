@@ -1,0 +1,16 @@
+<!-- project/templates/project/add_wishlist.html 
+ bu email: myichen@bu.edu
+ Base html for the other templates -->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+<h1>Edit Favorite Dragon</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
+{% endblock %}

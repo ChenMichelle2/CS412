@@ -20,6 +20,8 @@ class Dragon(models.Model):
   rarity = models.CharField(max_length=50, blank=False, null=True)
   combo = models.CharField(max_length=200, blank= False, null=True)
   incubation = models.DurationField(blank=True, null=True)
+  available = models.BooleanField(default=True)
+  wiki_url = models.URLField(max_length=300, blank=True, null=True)
 
   # image url
   image_url = models.URLField(max_length=300, blank=True, null=True)
@@ -28,12 +30,12 @@ class Dragon(models.Model):
     return self.name
   
 class FavoriteDragon(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='favorites')
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE, related_name='favorite_dragon')
     dragon = models.ForeignKey(Dragon, on_delete=models.CASCADE, related_name='favorited_by')
     added_on = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.profile.user.username} - {self.dragon.name}"
+        return f"{self.profile.user.username}'s favorite dragon: {self.dragon.name}"
   
 class Wishlist(models.Model):
    
@@ -43,6 +45,7 @@ class Wishlist(models.Model):
   parent_1 = models.CharField(max_length=100, blank=False)
   parent_2 = models.CharField(max_length=100, blank=False)
   date_added = models.DateTimeField(default=timezone.now)
+  
 
   def __str__(self):
     return f"{self.profile.user} - {self.dragon.name} ({self.parent_1} + {self.parent_2})"

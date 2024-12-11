@@ -6,22 +6,38 @@
 
 {% block content %}
 <h1>User Profile</h1>
-
-<div class="profile-card">
-  <div class="profile-image">
-    {% if profile.image_url %}
-    <img src="{{ profile.image_url }}" alt="Profile Image" width="200 px">
-    {% else %}
-    <p>No profile image available</p>
-    {% endif %}
-  </div>
-  <div class="profile-details">
-    <h2>{{ profile.user.username }}</h2>
+<!-- user information -->
+<div class="profile-image">
+  {% if profile.image_url %}
+  <img src="{{ profile.image_url }}" alt="Profile Image" width="200 px">
+  {% else %}
+  <p>No profile image available</p>
+  {% endif %}
+</div>
+<div class="profile-details">
+  <h2>{{ profile.user.username }}</h2>
+  <a href="{% url 'update profile' %}"> Update Profile Picture</a>
+</div>
+<!-- Favorite Dragon -->
+<h2> Favorite Dragon </h2>
+<p>
+  {% if favorite_dragon %}
+<div class="mini-dragon-grid">
+  <div class="mini-dragon-card">
+    <img src="{{ favorite_dragon.dragon.image_url }}" alt="{{ favorite_dragon.dragon.name }}">
+    <h2>{{ favorite_dragon.dragon.name }}</h2>
   </div>
 </div>
+{% else %}
+<p>No favorite dragon selected</p>
+{% endif %}
+</p>
+<a href="{% url 'Edit Favorite' %}"> Edit Favorite Dragon </a>
+
 <!-- Wishlist Section -->
 <h2>Your Wishlist</h2>
-<a href="{% url 'Add to Wishlist'%}">Add Dragons to Wishlist</a>
+<a href="{% url 'Add to Wishlist'%}">Add Dragons to Wishlist</a> <br>
+<a href="{% url 'Remove from Wishlist' %}">Remove Dragon from WishList</a>
 {% if wishlist %}
 <ul>
 

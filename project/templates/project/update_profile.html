@@ -1,0 +1,28 @@
+<!-- 
+ mini_fb/templates/mini_fb/update_profile_form.html
+ myichen@bu.edu
+ -->
+{% extends 'project/base.html' %}
+
+{% block content%}
+
+<h1>Create a Profile</h1>
+<div class="update-container">
+  <form method='POST'>
+    <!-- show this first -->
+
+    <table>
+      <!-- creates form as table -->
+      {{form.as_table}}
+
+      <tr>
+        <td></td>
+        <td><input type="submit" name="submit" value="Update Profile"></td>
+      </tr>
+    </table>
+
+    {% csrf_token %}
+  </form>
+
+</div>
+{% endblock%}

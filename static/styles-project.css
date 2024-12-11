@@ -6,6 +6,17 @@ body {
   padding: 0;
 }
 
+.about-container {
+  padding-left: 300px;
+  padding-right: 300px;
+}
+
+.update-container {
+  text-align: center;
+  padding-left: 600px;
+  padding-right: 400px;
+}
+
 /* Container for the grid */
 .dragon-grid {
   display: grid;
@@ -69,8 +80,10 @@ body {
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
-  max-width: 1200px;
   margin: 0 auto;
+  background-color: #891c1c;
+  max-width: 900px;
+  margin: 20px auto;
 }
 
 /* Profile Info Section */
@@ -88,11 +101,13 @@ body {
 
 /* Profile Image */
 .profile-image {
+  margin: 0 auto;
   width: 100%;
   max-width: 150px;
   height: auto;
   border-radius: 50%;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Profile Wishlist Section */
@@ -113,7 +128,7 @@ body {
   padding: 10px;
   /* Smaller padding */
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 500px;
   /* Smaller grid width */
 }
 

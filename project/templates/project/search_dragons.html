@@ -1,0 +1,20 @@
+<!-- project/templates/project/search_dragons.html
+  bu email: myichen@bu.edu -->
+<h3>Filter Wishlist</h3>
+<form action="{% url 'Show_All_Dragons' %}">
+  <ul>
+    <li>
+      <label for="available">Availability:</label>
+      <select name="available" id="available">
+        <option value="">--Any--</option>
+        <option value="true">Available</option>
+        <option value="false">Not Available</option>
+      </select>
+    </li>
+    <li>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" placeholder="Enter dragon name">
+    </li>
+  </ul>
+  <input type="submit" value="Filter">
+</form>
